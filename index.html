@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Worrdle</title>
+    <!-- The logo and favicons are built into this page, so they show up
+         no matter which folder the page is served from. -->
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' role='img' aria-label='Worrdle'%3E%3Ctitle%3EWorrdle%3C/title%3E%3Cpath fill='%23FFD340' d='M0 0L16 0L16 32L0 32Z'/%3E%3Cpath fill='%2313294B' d='M1.5 22.37L1.5 21.13L4.09 21L5.32 21L7.85 21.13L7.85 22.37ZM3 22.37C3.02 21.73 3.03 21.1 3.03 20.46C3.04 19.82 3.04 19.18 3.04 18.54C3.04 17.9 3.04 17.27 3.04 16.65L3.04 15.6C3.04 14.98 3.04 14.35 3.04 13.72C3.04 13.09 3.04 12.45 3.03 11.8C3.03 11.16 3.02 10.52 3 9.88L6.38 9.88C6.37 10.52 6.36 11.16 6.36 11.8C6.35 12.45 6.35 13.1 6.35 13.76C6.35 14.42 6.35 15.09 6.35 15.79L6.35 16.48C6.35 17.15 6.35 17.81 6.35 18.47C6.35 19.13 6.35 19.78 6.36 20.43C6.36 21.07 6.37 21.72 6.38 22.37ZM12.37 22.61C11.5 22.61 10.82 22.45 10.33 22.13C9.84 21.8 9.54 21.26 9.43 20.48L9.06 18.41C9 18 8.9 17.66 8.75 17.41C8.6 17.15 8.41 16.97 8.18 16.86C7.95 16.74 7.64 16.68 7.26 16.68L4.77 16.68L4.77 15.53L7.24 15.53C7.82 15.53 8.29 15.43 8.66 15.24C9.02 15.05 9.28 14.79 9.44 14.45C9.61 14.12 9.69 13.73 9.69 13.28C9.69 12.54 9.49 11.98 9.08 11.63C8.68 11.28 8.08 11.1 7.3 11.1L5.17 11.1L5.17 9.88L7.83 9.88C9.51 9.88 10.8 10.15 11.68 10.69C12.56 11.23 13 11.99 13 12.98C13 13.51 12.83 13.99 12.5 14.41C12.17 14.84 11.68 15.18 11.01 15.43C10.35 15.68 9.5 15.83 8.47 15.87L8.47 15.98C9.18 15.99 9.78 16.05 10.25 16.15C10.73 16.25 11.11 16.41 11.41 16.64C11.71 16.86 11.94 17.15 12.11 17.52C12.28 17.89 12.42 18.35 12.52 18.91L13.11 21.97L11.48 20.9L14.5 21.17L14.5 22.37C14.27 22.42 14.05 22.46 13.83 22.49C13.62 22.52 13.4 22.55 13.17 22.57C12.94 22.6 12.67 22.61 12.37 22.61ZM1.5 11.1L1.5 9.88L4.24 9.88L4.24 11.25L3.93 11.25Z'/%3E%3Cpath fill='%234B9CD3' d='M16 0L32 0L32 32L16 32Z'/%3E%3Cpath fill='%2313294B' d='M17.5 22.37L17.5 21.13L20.09 21L21.32 21L23.85 21.13L23.85 22.37ZM19 22.37C19.02 21.73 19.03 21.1 19.03 20.46C19.04 19.82 19.04 19.18 19.04 18.54C19.04 17.9 19.04 17.27 19.04 16.65L19.04 15.6C19.04 14.98 19.04 14.35 19.04 13.72C19.04 13.09 19.04 12.45 19.03 11.8C19.03 11.16 19.02 10.52 19 9.88L22.39 9.88C22.37 10.52 22.36 11.16 22.36 11.8C22.35 12.45 22.35 13.1 22.35 13.76C22.35 14.42 22.35 15.09 22.35 15.79L22.35 16.48C22.35 17.15 22.35 17.81 22.35 18.47C22.35 19.13 22.35 19.78 22.36 20.43C22.36 21.07 22.37 21.72 22.39 22.37ZM28.37 22.61C27.5 22.61 26.82 22.45 26.33 22.13C25.84 21.8 25.54 21.26 25.43 20.48L25.06 18.41C25 18 24.9 17.66 24.75 17.41C24.6 17.15 24.41 16.97 24.18 16.86C23.95 16.74 23.64 16.68 23.26 16.68L20.77 16.68L20.77 15.53L23.24 15.53C23.82 15.53 24.29 15.43 24.66 15.24C25.02 15.05 25.28 14.79 25.44 14.45C25.61 14.12 25.69 13.73 25.69 13.28C25.69 12.54 25.49 11.98 25.08 11.63C24.68 11.28 24.08 11.1 23.3 11.1L21.17 11.1L21.17 9.88L23.83 9.88C25.51 9.88 26.8 10.15 27.68 10.69C28.56 11.23 29 11.99 29 12.98C29 13.51 28.83 13.99 28.5 14.41C28.17 14.84 27.68 15.18 27.01 15.43C26.35 15.68 25.5 15.83 24.48 15.87L24.48 15.98C25.18 15.99 25.78 16.05 26.25 16.15C26.73 16.25 27.11 16.41 27.41 16.64C27.71 16.86 27.94 17.15 28.11 17.52C28.28 17.89 28.42 18.35 28.52 18.91L29.11 21.97L27.48 20.9L30.5 21.17L30.5 22.37C30.27 22.42 30.05 22.46 29.83 22.49C29.62 22.52 29.4 22.55 29.17 22.57C28.94 22.6 28.67 22.61 28.37 22.61ZM17.5 11.1L17.5 9.88L20.24 9.88L20.24 11.25L19.93 11.25Z'/%3E%3C/svg%3E"
+        type="image/svg+xml">
+    <link rel="icon"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAACzElEQVR4nOxWX0hTURg/59zt7k9zyrTJ1GXzTyDbiGpJ0n+NCJUeKlKKekwK6qGIHnrIHiMoqJfqIYSgQArS6ClMwtCyCGkiLSWzOa2bd7XpvLu7/zqXs81tXoQ99Lbv5f7ud37n+33fd79zuDrFvw/kY+3v7+bF14H/bAWBgkBBgAjc6NXffErnLJRY5MpS4KmWOvaKe7xy5lJw+FVoZCCHTxlNhqISc5mjzL21pLou7Yf4qpAkwPyFTReNSxzCrnvn44d8Ut+I7spDOp6A2HO7iz/VIpIN+KpQZFmILY713JITPPbUtnbaahvYgH/6dZ8iCtjjOnik3NtI+GpEigKOUiUhwKQmBBYTONksnm0XiOdOnz4zWYgQXVSsiOJK+rTB7vU5tu0ir3Ojb7JalI6bAknk3pDsDMcDDYMwh4/7Q4AsCGkWWkEoN8LQOEXApaMC0IifuyEanCKgckcz0KggBfrfUZMhGFmGkyF0Yr9wukX0bZKBhoJCnuxXPxdmRD7OhX+v9/js3u1FFdUaAmkLzMJwlAqE4DIPHaWy1ayANY1jf4lcjGMZ3BnaUkwZTJmraPWGy8fE/uvxBxcSHA+fvdUf7jbOs3ANgaqmA+6Orvq2TllMsF/GJnrvJxYjGgJydqK7PaLFqLoWoujlKLU6rpLNtzprKb0BA3E5Fp4a1xCQsvuMEPS4ki7/jEahQMnagGfXbK8gOMbMawikM5JTtWyuSYb4PI20KlBSIElbV16ZEphL06jucxufDOqu9tAzDCSjFJhFn6ZQW6Nks8iPBtQjxi7CIb/aJa9LfhxqZcY/fh98wUf+kC8TX2CWfgZt9R6d0cT4P2CPwMUiP9SRXWevUKdop1ty2rM6aqbV1y11yvNr8eEJhHPFp6SpQSKrVmeNodiWyad0ah4Wh7Ph+Jlo8BuuCp8Sa5ULkLsI5GOF35aCQEEgf/sHAAD//x+XSA4AAAAGSURBVAMAJI8I9u9c0psAAAAASUVORK5CYII="
+        type="image/png" sizes="32x32">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <style>
+        /* Worrdle visual standard, set by the teaching card.
+           Colors come from UNC's palette. Source Serif 4 is for headings and reading text,
+           Open Sans is for labels, buttons and the game itself. Corners are square. */
+        :root {
+            --navy: #13294B;
+            --carolina: #4B9CD3;
+            --ginkgo: #FFD340;
+            --flat-gray: #A2AAAD;
+            --basin: #5B6670;
+            --cornerstone: #CFD3D5;
+            --fog: #ECEDED;
+            --link: #007FAE;
+            --serif: "Source Serif 4", Georgia, serif;
+            --sans: "Open Sans", Arial, sans-serif;
+
+            /* Key height grows with the window, so the whole game fits without scrolling. */
+            --key-height: clamp(40px, 6.5vh, 54px);
+            --key-height: clamp(40px, 6.5dvh, 54px);
+        }
+
+        /* Page frame: one centered column that fits a phone. */
+        body {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 0 12px 12px;
+            background: #FFFFFF;
+            color: #000000;
+            font-family: var(--sans);
+        }
+
+        /* Header: the name in the card's serif, over a navy rule like the card's. */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--navy);
+        }
+
+        /* The logo (an SVG drawn right in the page) is 40px tall, so 6px + 4px margins keep the header
+           the same height as the old text heading (the no-scroll fit
+           depends on it). */
+        h1 {
+            margin: 6px 0 4px;
+            line-height: 0;
+        }
+
+        #logo {
+            display: block;
+            width: 168px;
+            height: 40px;
+        }
+
+        /* Outlined buttons: How to play and Hint. */
+        #how-button,
+        #hint-button {
+            padding: 6px 14px;
+            border: 2px solid var(--navy);
+            border-radius: 0;
+            background: #FFFFFF;
+            color: var(--navy);
+            font-family: var(--sans);
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Loading and no-puzzle lines: black text, like the rest of the page's reading text. */
+        #loading,
+        #no-puzzle {
+            color: #000000;
+            font-size: 16px;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        #no-puzzle a {
+            color: var(--link);
+            font-weight: 600;
+            text-underline-offset: 3px;
+        }
+
+        /* Gameplay message: floats over the top of the board, below the hint row, so nothing moves. */
+        #board-area {
+            position: relative;
+        }
+
+        #message {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            z-index: 5;
+            margin: 0;
+            padding: 9px 16px;
+            background: var(--navy);
+            color: #FFFFFF;
+            font-size: 15px;
+            font-weight: 600;
+            white-space: nowrap;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        /* Hint area: keeps its height, so the board stays put when the button appears. */
+        #hint-area {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            min-height: 40px;
+            margin-bottom: 6px;
+        }
+
+        /* The hint reads like "Today's word" on the card: navy text after a Carolina blue diamond. */
+        #hint-text {
+            margin: 0;
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        #hint-text::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            margin: 0 9px 1px 1px;
+            background: var(--carolina);
+            transform: rotate(45deg);
+        }
+
+        /* Board: six rows of five square tiles. They shrink on narrow screens and on short windows. */
+        #board {
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            gap: 5px;
+            width: 100%;
+            max-width: 330px;
+            max-width: clamp(200px, calc((100vh - 170px - 3 * var(--key-height)) / 1.2), 330px);
+            max-width: clamp(200px, calc((100dvh - 170px - 3 * var(--key-height)) / 1.2), 330px);
+            margin: 0 auto;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+        }
+
+        .tile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 1;
+            border: 2px solid var(--flat-gray);
+            font-size: clamp(1.4rem, 4.6vh, 2rem);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .symbol {
+            position: absolute;
+            top: 2px;
+            right: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Keyboard: keys share each row's width, Enter and Delete are wider. */
+        #keyboard {
+            margin-top: 12px;
+        }
+
+        .key-row {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 6px;
+        }
+
+        .key {
+            flex: 1;
+            max-width: 44px;
+            height: var(--key-height);
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            background: var(--fog);
+            color: #000000;
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        #key-enter,
+        #key-delete {
+            flex: 1.5;
+            max-width: 66px;
+            font-size: 0.75rem;
+        }
+
+        /* Page scrolls glide, unless the player's system asks for reduced motion. */
+        @media (prefers-reduced-motion: no-preference) {
+            html {
+                scroll-behavior: smooth;
+            }
+        }
+
+        /* Result: the line, the shareable grid, and the copy button, centered under the board. */
+        #result {
+            margin-top: 16px;
+            scroll-margin-top: 12px;
+            text-align: center;
+        }
+
+        #result-line {
+            margin: 0 0 12px;
+            color: var(--navy);
+            font-family: var(--serif);
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        #share-grid {
+            width: fit-content;
+            margin: 0 auto 14px;
+            padding: 0;
+            color: #000000;
+            font-family: var(--sans);
+            font-size: 18px;
+            line-height: 1.3;
+            text-align: left;
+        }
+
+        #copy-button {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 0;
+            background: var(--navy);
+            color: #FFFFFF;
+            font-family: var(--sans);
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Copied appears under the button in space that is already reserved, so nothing shifts. */
+        #copy-status {
+            display: block;
+            min-height: 1.3em;
+            margin-top: 6px;
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        #result-note {
+            margin: 2px 0 0;
+            color: #000000;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+
+        /* Teaching card: an editorial layout with labels on the left and content on the right. */
+        #card {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 2px solid var(--navy);
+            color: #000000;
+            font-family: var(--serif);
+        }
+
+        #card p {
+            margin: 0;
+        }
+
+        #card-secret {
+            margin: 0 0 24px;
+            color: var(--carolina);
+            font-size: 50px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .entry {
+            display: grid;
+            grid-template-columns: 104px 1fr;
+            column-gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        #card .entry-label {
+            margin-top: 4px;
+            color: var(--basin);
+            font-family: var(--sans);
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* "Today's word" sits under its label, after a small Carolina blue diamond. */
+        .today {
+            display: block;
+            margin-top: 6px;
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .today::before {
+            content: "";
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin: 0 7px 1px 1px;
+            background: var(--carolina);
+            transform: rotate(45deg);
+        }
+
+        #card .term {
+            margin-bottom: 6px;
+            color: var(--navy);
+            font-size: 21px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Today's term gets a Carolina blue underline. */
+        .entry:has(.today:not([hidden])) .term {
+            text-decoration: underline;
+            text-decoration-color: var(--carolina);
+            text-decoration-thickness: 3px;
+            text-underline-offset: 6px;
+        }
+
+        .example,
+        #why-it-matters {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .example strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .details {
+            color: var(--basin);
+            font-family: var(--sans);
+            font-size: 13.5px;
+            line-height: 1.55;
+        }
+
+        #card .study-title {
+            margin-bottom: 6px;
+            color: #000000;
+            font-family: var(--serif);
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .details a {
+            color: var(--link);
+            font-weight: 600;
+            text-underline-offset: 3px;
+        }
+
+        #credit {
+            margin-left: 122px;
+            font-size: 16px;
+            font-style: italic;
+        }
+
+        /* On a phone, each label sits above its content instead of beside it. */
+        @media (max-width: 520px) {
+            .entry {
+                grid-template-columns: 1fr;
+            }
+
+            #card .entry-label {
+                margin: 0 0 6px;
+            }
+
+            .today {
+                display: inline-block;
+                margin: 0 0 0 10px;
+            }
+
+            #credit {
+                margin-left: 0;
+            }
+        }
+
+        /* Shared rule: the hidden attribute always wins over display settings. */
+        [hidden] {
+            display: none !important;
+        }
+
+        /* How to play: a square white panel that opens with the same navy rule as the card. */
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: rgba(19, 41, 75, 0.6);
+        }
+
+        .modal {
+            position: relative;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 440px;
+            max-height: calc(100vh - 32px);
+            max-height: calc(100dvh - 32px);
+            overflow-y: auto;
+            padding: 20px 28px 22px;
+            border-top: 2px solid var(--navy);
+            background: #FFFFFF;
+            color: #000000;
+            font-family: var(--serif);
+            font-size: 16px;
+            line-height: 1.45;
+        }
+
+        .modal:focus {
+            outline: none;
+        }
+
+        .modal h2 {
+            margin: 0 0 6px;
+            color: var(--navy);
+            font-size: 30px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .modal p {
+            margin: 0 0 12px;
+        }
+
+        .modal .modal-lead {
+            color: var(--navy);
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 44px;
+            height: 44px;
+            border: none;
+            background: none;
+            color: var(--navy);
+            font-family: var(--sans);
+            font-size: 30px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .legend {
+            margin: 0 0 14px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .legend li {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 10px;
+            color: #000000;
+            font-family: var(--sans);
+            font-size: 15px;
+            line-height: 1.35;
+        }
+
+        .legend strong {
+            color: var(--navy);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .legend-tile {
+            position: relative;
+            display: flex;
+            flex: none;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            color: #000000;
+            font-size: 21px;
+            font-weight: 700;
+        }
+
+        .legend-symbol {
+            position: absolute;
+            top: 1px;
+            right: 4px;
+            font-size: 11px;
+        }
+
+        .legend-tile.correct {
+            background: var(--carolina);
+        }
+
+        .legend-tile.present {
+            background: var(--ginkgo);
+        }
+
+        .legend-tile.absent {
+            background: var(--flat-gray);
+        }
+
+        .modal-button {
+            display: block;
+            width: 100%;
+            height: 46px;
+            margin-top: 16px;
+            border: none;
+            border-radius: 0;
+            background: var(--navy);
+            color: #FFFFFF;
+            font-family: var(--sans);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1><svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 168 40" width="168" height="40" role="img"
+                aria-label="Worrdle">
+                <title>Worrdle</title>
+                <path fill="#13294B"
+                    d="M7.41 29.03L1.62 9.29L7.23 9.29L10.98 25.22L10.95 25.22L11.7 21.29L15.27 9.29L18.87 9.29L23.04 25.31L22.98 25.31L23.91 20.81L27.09 9.29L29.34 9.29L23.31 29.03L19.41 29.03L15.45 13.88L15.51 13.88L14.82 17.42L11.34 29.03ZM0.36 11.21L0.36 9.29L10.05 9.29L10.05 11.21L6.39 11.45L3.87 11.45ZM12.48 11.21L12.48 9.29L21.99 9.29L21.99 11.21L18.69 11.45L15.99 11.45ZM24.27 11.21L24.27 9.29L30.87 9.29L30.87 11.21L28.08 11.45L27.27 11.45ZM40.14 29.45C38.62 29.45 37.25 29.14 36.05 28.52C34.84 27.9 33.88 27 33.18 25.8C32.48 24.62 32.13 23.19 32.13 21.53C32.13 19.85 32.49 18.42 33.23 17.24C33.95 16.06 34.92 15.16 36.13 14.53C37.34 13.9 38.68 13.58 40.14 13.58C41.6 13.58 42.94 13.89 44.14 14.5C45.35 15.11 46.33 16 47.05 17.16C47.78 18.34 48.15 19.77 48.15 21.47C48.15 23.13 47.8 24.56 47.1 25.76C46.4 26.96 45.45 27.88 44.23 28.5C43.02 29.14 41.66 29.45 40.14 29.45ZM40.14 27.59C40.74 27.59 41.24 27.39 41.66 26.99C42.06 26.59 42.38 25.95 42.6 25.07C42.82 24.19 42.93 23.02 42.93 21.56C42.93 20.1 42.82 18.93 42.6 18.04C42.38 17.14 42.06 16.49 41.66 16.07C41.24 15.65 40.74 15.44 40.14 15.44C39.54 15.44 39.03 15.64 38.62 16.05C38.22 16.47 37.9 17.11 37.68 17.99C37.46 18.87 37.35 20.04 37.35 21.5C37.35 22.94 37.46 24.11 37.68 25.01C37.9 25.91 38.22 26.57 38.62 26.98C39.03 27.39 39.54 27.59 40.14 27.59Z" />
+                <path fill="#FFD340" d="M49.28 5.13L82.04 1.11L86.06 33.87L53.3 37.89Z" />
+                <path fill="#13294B"
+                    d="M59.61 29.6L59.39 27.86L63.01 27.23L64.76 27.01L68.34 26.76L68.56 28.5ZM61.72 29.34C61.63 28.45 61.54 27.55 61.43 26.64C61.33 25.74 61.23 24.84 61.11 23.94C61 23.03 60.89 22.15 60.79 21.27L60.61 19.8C60.5 18.92 60.39 18.04 60.28 17.14C60.17 16.25 60.06 15.35 59.93 14.44C59.81 13.53 59.69 12.63 59.56 11.74L64.33 11.15C64.42 12.05 64.52 12.95 64.62 13.86C64.73 14.77 64.84 15.69 64.95 16.62C65.06 17.55 65.18 18.51 65.3 19.49L65.42 20.46C65.54 21.4 65.65 22.34 65.77 23.27C65.88 24.2 66 25.12 66.12 26.03C66.24 26.94 66.36 27.85 66.49 28.76ZM74.98 28.07C73.75 28.22 72.76 28.11 72.01 27.74C71.27 27.37 70.75 26.65 70.46 25.58L69.59 22.72C69.43 22.14 69.22 21.69 68.97 21.35C68.72 21.02 68.42 20.79 68.07 20.67C67.72 20.55 67.28 20.53 66.74 20.59L63.23 21.02L63.03 19.39L66.52 18.96C67.34 18.86 67.99 18.65 68.46 18.31C68.94 17.98 69.26 17.57 69.44 17.07C69.61 16.56 69.66 16 69.58 15.37C69.46 14.32 69.07 13.58 68.44 13.15C67.81 12.72 66.94 12.57 65.83 12.71L62.83 13.08L62.62 11.36L66.37 10.9C68.75 10.61 70.6 10.77 71.94 11.37C73.27 11.98 74.02 12.98 74.19 14.37C74.29 15.12 74.14 15.83 73.75 16.48C73.36 17.14 72.71 17.7 71.82 18.17C70.92 18.65 69.76 19 68.32 19.23L68.34 19.39C69.34 19.29 70.18 19.26 70.87 19.32C71.56 19.39 72.13 19.55 72.59 19.81C73.05 20.07 73.43 20.44 73.74 20.93C74.04 21.42 74.31 22.05 74.55 22.82L75.91 27.03L73.42 25.81L77.73 25.66L77.94 27.35C77.62 27.46 77.32 27.56 77.02 27.64C76.72 27.72 76.41 27.8 76.1 27.88C75.78 27.95 75.41 28.02 74.98 28.07ZM57.66 13.71L57.45 12L61.3 11.52L61.54 13.45L61.11 13.5Z" />
+                <path fill="#4B9CD3" d="M87.17 3L120.17 3L120.17 36L87.17 36Z" />
+                <path fill="#13294B"
+                    d="M94.44 28.55L94.44 26.79L98.11 26.6L99.86 26.6L103.45 26.79L103.45 28.55ZM96.57 28.55C96.59 27.65 96.6 26.74 96.61 25.83C96.62 24.92 96.62 24.01 96.62 23.1C96.62 22.2 96.62 21.3 96.62 20.42L96.62 18.93C96.62 18.05 96.62 17.16 96.62 16.26C96.62 15.36 96.62 14.45 96.61 13.53C96.6 12.62 96.59 11.71 96.57 10.81L101.38 10.81C101.36 11.71 101.34 12.62 101.33 13.53C101.33 14.45 101.32 15.38 101.32 16.31C101.32 17.25 101.32 18.21 101.32 19.2L101.32 20.18C101.32 21.13 101.32 22.07 101.32 23.01C101.32 23.95 101.33 24.87 101.33 25.79C101.34 26.71 101.36 27.63 101.38 28.55ZM109.88 28.9C108.64 28.9 107.67 28.67 106.98 28.21C106.28 27.75 105.86 26.97 105.7 25.87L105.18 22.93C105.09 22.34 104.94 21.86 104.74 21.5C104.53 21.14 104.26 20.88 103.93 20.72C103.59 20.55 103.16 20.47 102.62 20.47L99.08 20.47L99.08 18.83L102.59 18.83C103.42 18.83 104.09 18.69 104.6 18.42C105.11 18.15 105.49 17.78 105.72 17.3C105.96 16.82 106.07 16.27 106.07 15.64C106.07 14.58 105.78 13.79 105.21 13.29C104.63 12.79 103.79 12.53 102.67 12.53L99.65 12.53L99.65 10.81L103.43 10.81C105.82 10.81 107.64 11.19 108.89 11.95C110.15 12.72 110.77 13.8 110.77 15.21C110.77 15.96 110.54 16.64 110.07 17.25C109.6 17.85 108.89 18.33 107.95 18.69C107 19.05 105.8 19.26 104.34 19.31L104.34 19.47C105.35 19.49 106.19 19.57 106.87 19.72C107.54 19.86 108.09 20.09 108.52 20.4C108.94 20.72 109.27 21.14 109.52 21.66C109.76 22.18 109.95 22.84 110.1 23.63L110.93 27.98L108.61 26.47L112.9 26.84L112.9 28.55C112.58 28.62 112.27 28.68 111.96 28.72C111.65 28.77 111.34 28.81 111.01 28.84C110.69 28.88 110.31 28.9 109.88 28.9ZM94.44 12.53L94.44 10.81L98.32 10.81L98.32 12.75L97.89 12.75Z" />
+                <path fill="#13294B"
+                    d="M128.16 29.45C127.02 29.45 126 29.14 125.1 28.54C124.2 27.93 123.49 27.04 122.97 25.88C122.45 24.72 122.19 23.3 122.19 21.62C122.19 19.94 122.48 18.5 123.05 17.3C123.61 16.1 124.38 15.18 125.33 14.54C126.28 13.9 127.32 13.58 128.46 13.58C129.24 13.58 129.9 13.71 130.44 13.96C130.98 14.21 131.44 14.54 131.81 14.96C132.18 15.38 132.51 15.86 132.81 16.4L134.1 16.4L133.95 18.44C133.41 17.82 132.88 17.34 132.36 17.02C131.84 16.69 131.25 16.52 130.59 16.52C129.97 16.52 129.41 16.7 128.93 17.05C128.44 17.4 128.06 17.94 127.8 18.68C127.54 19.42 127.41 20.37 127.41 21.53C127.41 22.63 127.53 23.55 127.78 24.27C128.03 25 128.4 25.55 128.88 25.89C129.36 26.25 129.92 26.42 130.56 26.42C131.24 26.42 131.86 26.23 132.42 25.84C132.98 25.45 133.5 24.93 133.98 24.29L134.16 26.3L132.84 26.3C132.52 26.92 132.15 27.46 131.73 27.93C131.31 28.41 130.81 28.77 130.23 29.05C129.65 29.32 128.96 29.45 128.16 29.45ZM133.26 29.27L132.84 26.3L132.72 26.24L132.72 16.76L132.93 16.61L132.81 10.46L130.68 10.01L130.68 8.54L136.65 7.37L137.76 7.52L137.7 11.63L137.7 26.96L139.44 27.32L139.44 29ZM141.06 29L141.06 27.23L144.15 26.93L146.55 26.93L149.76 27.23L149.76 29ZM142.86 29C142.88 28.28 142.89 27.56 142.89 26.84C142.89 26.12 142.9 25.4 142.91 24.68C142.91 23.96 142.92 23.25 142.92 22.55L142.92 10.46L140.91 10.01L140.91 8.54L146.85 7.37L147.96 7.52L147.9 11.63L147.9 22.55C147.9 23.25 147.9 23.96 147.9 24.68C147.9 25.4 147.91 26.12 147.91 26.84C147.93 27.56 147.93 28.28 147.93 29ZM159.6 29.45C158 29.45 156.6 29.14 155.4 28.54C154.2 27.93 153.26 27.04 152.59 25.88C151.92 24.72 151.59 23.31 151.59 21.65C151.59 19.99 151.92 18.56 152.59 17.36C153.26 16.16 154.19 15.23 155.37 14.57C156.55 13.91 157.88 13.58 159.36 13.58C160.74 13.58 161.92 13.85 162.91 14.39C163.91 14.93 164.67 15.68 165.21 16.62C165.75 17.58 166.02 18.69 166.02 19.97C166.02 20.37 166 20.71 165.97 21C165.94 21.3 165.9 21.59 165.84 21.89L154.74 21.89L154.74 20.27L160.56 20.27C160.94 20.07 161.19 19.83 161.32 19.55C161.45 19.27 161.52 18.87 161.52 18.35C161.52 17.69 161.43 17.13 161.25 16.69C161.07 16.23 160.81 15.9 160.48 15.67C160.16 15.44 159.78 15.32 159.36 15.32C158.82 15.32 158.35 15.5 157.95 15.86C157.55 16.22 157.25 16.81 157.03 17.64C156.82 18.48 156.72 19.6 156.72 21.02C156.72 22.26 156.91 23.29 157.31 24.11C157.69 24.93 158.22 25.54 158.89 25.93C159.56 26.32 160.32 26.51 161.16 26.51C162 26.51 162.72 26.37 163.31 26.09C163.89 25.81 164.42 25.4 164.88 24.86L166.14 25.85C165.7 26.57 165.19 27.2 164.59 27.74C164 28.28 163.3 28.7 162.48 29C161.66 29.3 160.7 29.45 159.6 29.45Z" />
+            </svg></h1>
+        <button id="how-button">How to play</button>
+    </header>
+    <div id="how-to-play" class="modal-backdrop" hidden>
+        <section id="how-dialog" class="modal" role="dialog" aria-modal="true" aria-labelledby="how-title"
+            tabindex="-1">
+            <button id="how-close" class="modal-close" aria-label="Close">&times;</button>
+            <h2 id="how-title">How to play</h2>
+            <p class="modal-lead">Guess today's word in six tries.</p>
+            <p>The word has five letters. It is a term used in recruiting and keeping research participants (i.e.,
+                recruitment and retention, or R&amp;R). It is always either a jargon term or its plain-language
+                counterpart.</p>
+            <p>Each guess must be a five-letter word in the game's word list. After you submit a guess, each tile shows
+                how the letter fits:</p>
+            <ul class="legend">
+                <li>
+                    <span class="legend-tile correct">S<span class="legend-symbol">✓</span></span>
+                    <span><strong>Carolina blue ✓</strong><br>In the word and in the right spot.</span>
+                </li>
+                <li>
+                    <span class="legend-tile present">T<span class="legend-symbol">●</span></span>
+                    <span><strong>Yellow ●</strong><br>In the word but in a different spot.</span>
+                </li>
+                <li>
+                    <span class="legend-tile absent">U<span class="legend-symbol">–</span></span>
+                    <span><strong>Gray –</strong><br>Not in the word.</span>
+                </li>
+            </ul>
+            <p>After your fourth guess, a Hint button appears. It's optional. It tells you whether the word is a jargon
+                term or a plain-language term.</p>
+            <button id="how-got-it" class="modal-button">Got it</button>
+        </section>
+    </div>
+    <p id="loading">Loading today's puzzle...</p>
+    <section id="game" hidden>
+        <div id="hint-area">
+            <button id="hint-button" hidden>Hint</button>
+            <p id="hint-text" hidden></p>
+        </div>
+        <div id="board-area">
+            <p id="message" role="status" hidden></p>
+            <div id="board"></div>
+        </div>
+        <div id="keyboard"></div>
+        <section id="result" hidden>
+            <p id="result-line"></p>
+            <pre id="share-grid"></pre>
+            <button id="copy-button">Copy results</button>
+            <span id="copy-status"></span>
+            <p id="result-note">You can also select the results above and copy them yourself.</p>
+        </section>
+        <section id="card" hidden>
+            <h2 id="card-secret"></h2>
+            <div class="entry">
+                <p class="entry-label">Clinical or technical term
+                    <span id="clinical-today" class="today" hidden>Today's word</span>
+                </p>
+                <div>
+                    <p id="clinical-term" class="term"></p>
+                    <p id="clinical-example" class="example"></p>
+                </div>
+            </div>
+            <div class="entry">
+                <p class="entry-label">Plain-language term
+                    <span id="plain-today" class="today" hidden>Today's word</span>
+                </p>
+                <div>
+                    <p id="plain-term" class="term"></p>
+                    <p id="plain-example" class="example"></p>
+                </div>
+            </div>
+            <div class="entry">
+                <p class="entry-label">Why it matters</p>
+                <p id="why-it-matters"></p>
+            </div>
+            <div id="study-entry" class="entry" hidden>
+                <p class="entry-label">Study</p>
+                <div class="details">
+                    <p id="study-title" class="study-title" hidden></p>
+                    <p id="source-name" hidden></p>
+                    <p id="nct-line" hidden>ClinicalTrials.gov record: <a id="nct-link" target="_blank"></a></p>
+                </div>
+            </div>
+            <p id="credit" hidden></p>
+        </section>
+    </section>
+    <section id="no-puzzle" hidden>
+        <p>There's no puzzle for today. Have an idea for one? <a
+                href="https://forms.cloud.microsoft/r/U8JYDXJ1qz">Submit it here!</a></p>
+    </section>
+    <script type="py" src="./worrdle/page.py" config="./pyscript.json"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+    "files": {
+        "./worrdle/__init__.py": "./worrdle/__init__.py",
+        "./worrdle/game.py": "./worrdle/game.py",
+        "./worrdle/puzzles.py": "./worrdle/puzzles.py",
+        "./worrdle/words.py": "./worrdle/words.py"
+    }
+}
