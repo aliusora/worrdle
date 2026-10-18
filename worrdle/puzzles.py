@@ -6,7 +6,7 @@ from worrdle.game import Puzzle
 
 PUZZLES: list[Puzzle] = [
     Puzzle(
-        puzzle_date=date(2026, 10, 19),
+        puzzle_date=date(2026, 10, 18),
         secret="acute",
         is_jargon=True,
         counterpart="sudden; it came on quickly",
@@ -26,7 +26,7 @@ PUZZLES: list[Puzzle] = [
         study_title="Personalized Recommendations for Acute Kidney Injury (AKI) Care",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 20),
+        puzzle_date=date(2026, 10, 19),
         secret="obese",
         is_jargon=True,
         counterpart="at a weight that is higher than is healthy; unhealthy weight",
@@ -46,7 +46,7 @@ PUZZLES: list[Puzzle] = [
         " American Adolescents",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 21),
+        puzzle_date=date(2026, 10, 20),
         secret="fetal",
         is_jargon=True,
         counterpart="the unborn baby's, as in 'the baby is not growing as expected'",
@@ -67,7 +67,7 @@ PUZZLES: list[Puzzle] = [
         " Insufficiency. (STATIN-PRE Trial)",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 22),
+        puzzle_date=date(2026, 10, 21),
         secret="frail",
         is_jargon=True,
         counterpart="weaker, slower, or more tired than before",
@@ -86,7 +86,7 @@ PUZZLES: list[Puzzle] = [
         study_title="The Sedentary to Active Rising to Thrive (START) Trial",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 23),
+        puzzle_date=date(2026, 10, 22),
         secret="viral",
         is_jargon=True,
         counterpart="the amount of HIV in your blood, as in 'viral load'",
@@ -107,7 +107,7 @@ PUZZLES: list[Puzzle] = [
         " Diagnosed HIV Patients",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 24),
+        puzzle_date=date(2026, 10, 23),
         secret="sugar",
         is_jargon=False,
         counterpart="glycemic control; blood glucose; HbA1c",
@@ -128,7 +128,7 @@ PUZZLES: list[Puzzle] = [
         " Promotores",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 25),
+        puzzle_date=date(2026, 10, 24),
         secret="fecal",
         is_jargon=True,
         counterpart="stool (poop)",
@@ -148,7 +148,7 @@ PUZZLES: list[Puzzle] = [
         " SMARTER CRC",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 26),
+        puzzle_date=date(2026, 10, 25),
         secret="flare",
         is_jargon=False,
         counterpart="exacerbation; a period of increased disease activity",
@@ -169,7 +169,7 @@ PUZZLES: list[Puzzle] = [
         " Systemic Lupus Erythematosus (SLE)",
     ),
     Puzzle(
-        puzzle_date=date(2026, 10, 27),
+        puzzle_date=date(2026, 10, 26),
         secret="taper",
         is_jargon=True,
         counterpart="slowly lower a medicine dose over time",
